@@ -29,7 +29,7 @@ type UnlockerConfig struct {
 }
 
 const minDepth = 16
-const byzantiumHardForkHeight = 4370000
+const byzantiumHardForkHeight = 0
 
 var homesteadReward = math.MustParseBig256("5000000000000000000")
 var byzantiumReward = math.MustParseBig256("3000000000000000000")
@@ -501,11 +501,49 @@ func weiToShannonInt64(wei *big.Rat) int64 {
 	return value
 }
 
+var (
+	big1                   *big.Int = big.NewInt(1)
+	BlocksPerPhase         *big.Int = big.NewInt(172800) // Phase is the most small time period on reward change, average duration is 1 month (=30days)
+	RewardFirstPeriod      *big.Int = big.NewInt(3e+18)  // Block reward of phase 1 of kickstart era
+	KickstartSecondPhase   *big.Int = big.NewInt(2)      // Kickstart 2 start phase number
+	RewardSecondPeriod     *big.Int = big.NewInt(2e+18)  // Block reward of phase 2 of kickstart era
+	CurvedRewardPhase      *big.Int = big.NewInt(7)      // Phase curved reward era start from
+	CurvedEraRewardBase    *big.Int = big.NewInt(1e+18)  // Base reward on Curved reward era
+	MajorityWeight         *big.Int = big.NewInt(22)     // Higher the number is, reward decreases less between phases
+	EarlyMajorityAdvantage *big.Int = big.NewInt(3)      // Give reward advantage to early majority (give more coins to them)
+	CurveVariable          *big.Int = new(big.Int).Exp(MajorityWeight, EarlyMajorityAdvantage, nil)	// Just a pre-calculated variable
+)
+
 func getConstReward(height int64) *big.Int {
-	if height >= byzantiumHardForkHeight {
-		return new(big.Int).Set(byzantiumReward)
+	// Calculate phase the block on
+	rewardPhase := big.NewInt(height)
+	rewardPhase.Sub(rewardPhase, big1)	// Phase should end at header.Number % BlocksPerPhase == 0
+	rewardPhase.Div(rewardPhase, BlocksPerPhase)
+
+	// Basic block reward for the phase
+	var blockReward *big.Int
+
+	if rewardPhase.Cmp(CurvedRewardPhase) >= 0 {
+		// Curved reward era
+
+		blockReward = new(big.Int).Set(CurvedEraRewardBase)	// Basic reward on curved reward era
+		blockReward.Mul(blockReward, CurveVariable)
+
+		denominator := new(big.Int).Set(rewardPhase);
+		denominator.Sub(denominator, CurvedRewardPhase)	// Phase curved reward era start is the origin (Reward Level - 1)
+		denominator.Exp(denominator, EarlyMajorityAdvantage, nil)
+		denominator.Add(denominator, CurveVariable)
+
+		blockReward.Div(blockReward, denominator)	// Divide it to get current reward
+	} else if rewardPhase.Cmp(KickstartSecondPhase) >= 0 {
+		// Kickstart second period
+		blockReward = RewardSecondPeriod
+	} else {
+		// Kickstart first period
+		blockReward = RewardFirstPeriod
 	}
-	return new(big.Int).Set(homesteadReward)
+
+	return new(big.Int).Set(blockReward)
 }
 
 func getRewardForUncle(height int64) *big.Int {
