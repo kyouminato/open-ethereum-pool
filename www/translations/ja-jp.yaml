@@ -1,0 +1,126 @@
+navigation:
+  toggle: 'メニューの表示/非表示'
+  home: 'トップ'
+  help: '利用方法'
+  poolblocks: 'プールブロック'
+  payments: '払い出し'
+  miners: '採掘者'
+  about: 'プールについて'
+
+index:
+  header:
+    payout: '<strong>最小払い出し単位は{threthold}です。</strong> 1日に2回払い出しが行われます。'
+    prop: '定期的な払い出し機能を持ち、安定かつ収益性の高いプールです。'
+  stats:
+    miners: '接続中の採掘者数:'
+    poolhash: 'プールハッシュレート:'
+    poolfee: '利用手数料:'
+    lastblock: '最後のブロック発見:'
+    difficulty: 'ネットワーク難易度:'
+    nethash: 'ネットワークハッシュレート:'
+    blockheight: 'ブロック高さ:'
+    currentvariance: '当ラウンド分散値:'
+  lookup:
+    title: '採掘プロファイルと払い出し記録の表示'
+    addressplaceholder: 'Feathereumアドレスを入力して下さい'
+    button: '表示'
+
+miners:
+  totalhashrate: '合計ハッシュレート:'
+  totalminers: '全採掘者数:'
+  table:
+    title: '採掘者'
+    login: 'ログインアドレス'
+    hashrate: 'ハッシュレート'
+    lastbeat: '最後の通信'
+  nominers: '採掘者はいません'
+
+blocks:
+  explanation: 'プールは常に、Tx手数料、さらにアンクルブロック採掘報酬を含めた完全なブロック採掘報酬を支払います。'
+  maturity: 'ブロックの熟成には<u>最高で</u></strong> <span class="label label-success">{maturitytime}</span> <strong>ブロックかかります。大抵は、これより少なく設定されています。'
+  tab:
+    blocks: '成熟ブロック'
+    immature: '未成熟ブロック'
+    newblocks: '最近採掘されたブロック'
+  luck:
+    blocks: '採掘されたブロック'
+    sharesperdiff: 'シェア/難易度'
+    unclerate: 'アンクルブロック比率'
+    orphan: '確認されなかったブロック(Orphan)'
+  immature:
+    title: '未成熟のブロック'
+    noimmatureblock: '未成熟なブロックはありません'
+  block:
+    orphan: 'Orphan'
+  matured:
+    title: '成熟したブロック'
+    nomaturedblock: '成熟したブロックはありません'
+  recentlyfound:
+    title: '最近採掘されたブロック'
+    norecentlyfoundblock: '最近採掘されたブロックはありません'
+  table:
+    height: 'ブロック高さ'
+    blockhash: 'ブロック高さ'
+    timefound: '採掘日時'
+    variance: '分散'
+    reward: '採掘報酬'
+
+account:
+  stats:
+    immaturebalance:
+      title: '未成熟な受取報酬残高:'
+      description: '受け取った採掘報酬の中で、ブロックが成熟するまで待っている分の残高'
+    pendingbalance:
+      title: '払い出し待ち残高:'
+      description: '採掘者のアドレスへ送られるのを待っている残高'
+    currentpayment: '払い出しTx確認待ちの残高:'
+    totalpaid: '払い出し済み残高:'
+    lastsharesubmitted: '最後にシェアを確認した日時:'
+    workersonline: '接続中のワーカー数:'
+    hashrate30m: 'ハッシュレート (30分平均):'
+    hashrate1h: 'ハッシュレート (3時間平均):'
+    blockfound: '採掘したブロック:'
+    totalpayments: '払い出し回数:'
+    roundshare:
+      title: '当ラウンドのシェア率:'
+      description: '採掘者が、現在のラウンドでプールに対して貢献したシェアの割合です。'
+    epochswitch: 'エポック切り替わりまで:'
+  tab:
+    workers: 'ワーカー一覧'
+    payouts: '払い出し一覧'
+  workers:
+    title: '採掘者のワーカー一覧'
+    table:
+      id: 'ID'
+      shortaveragehashrate: 'ハッシュレート (荒い値、短期間における平均)'
+      logaveragehashrate: 'ハッシュレート (正確な値、長期間における平均)'
+      lastshare: '最後にプールが受け取ったシェア'
+    noworkersonline: '接続されたワーカーはありません'
+    notice:
+      title: '注意:'
+      description:
+        '(訳不正確)採掘者の平均ハッシュレートは、プールが期待する採掘者のハッシュレートのウィンドウ（上限値）分のシェアを受け取るまで、滑らかに近似されます。<br/>
+        長期と短期の2つのウィンドウがあり、短期ウィンドウは約30分に等しく、長期ウィンドウは大抵約3時間と等しくなっています。<br/>
+        短期ウィンドウの1/2より少ないシェアを送る、機能していない(もしくは全力が出ていない)ワーカーは、表にハイライトされるので、
+        それを参考にしてリグのメンテナンスを行って下さい。'
+  payouts:
+    title: '採掘者に対する最近の払い出し'
+    table:
+      time: '時刻'
+      txid: 'Txハッシュ'
+      amount: '量'
+    nopayouts: '採掘者に対する払い出しは、まだ行われていません'
+  noaccountfound:
+    title: 'アカウントに対するプロファイルがありません'
+    description: 'このアカウントがあなたのものであっても、少なくとも一度はシェアを送信しなければ、プロファイルは表示されません。'
+
+payments:
+  explanation: '払い出しTxの手数料は、現在プールが負担しています。'
+  totalsent: '全払い出し回数:'
+  latestpayouts: '最近の払い出し'
+  table:
+    time: '時刻'
+    amount: '量'
+    address: 'アドレス'
+    txid: 'Txハッシュ'
+  nopayouts: '最近の払い出しはありません'

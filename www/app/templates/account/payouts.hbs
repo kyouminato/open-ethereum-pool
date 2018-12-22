@@ -1,13 +1,13 @@
 <div class="container">
   {{#if model.payments}}
-  <h4>Your Latest Payouts</h4>
+  <h4>{{t 'account.payouts.title'}}</h4>
   <div class="table-responsive">
     <table class="table table-condensed table-striped">
       <thead>
         <tr>
-          <th>Time</th>
-          <th>Tx ID</th>
-          <th>Amount</th>
+          <th>{{t 'account.payouts.table.time'}}</th>
+          <th>{{t 'account.payouts.table.txid'}}</th>
+          <th>{{t 'account.payouts.table.amount'}}</th>
         </tr>
       </thead>
       <tbody>
@@ -24,6 +24,6 @@
     </table>
   </div>
   {{else}}
-  <h3>No payouts yet</h3>
+  <h3>{{t 'account.payouts.nopayouts'}}</h3>
   {{/if}}
 </div>

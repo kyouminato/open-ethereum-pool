@@ -2,6 +2,8 @@ import Ember from 'ember';
 import config from '../config/environment';
 
 export default Ember.Controller.extend({
+  intl: Ember.inject.service(),
+
   get config() {
     return config.APP;
   },
@@ -80,5 +82,27 @@ export default Ember.Controller.extend({
       var epochOffset = (30000 - (this.getWithDefault('height', 1) % 30000)) * 1000 * this.get('config').BlockTime;
       return Date.now() + epochOffset;
     }
-  })
+  }),
+
+  supportedLanguages: Ember.computed({
+    get() {
+      // Returns supported locales detected by ember-intl
+      return this.get('intl.locales');
+    }
+  }),
+
+  actions: {
+    languageChanged: function() {
+      // Detect which option is selected
+      const selectedIndex = Ember.$('#language-selector')[0].selectedIndex;
+      const selectedOption = Ember.$('#language-selector option')[selectedIndex];
+      const selectedLangCode = selectedOption.value;
+
+      // Set a selected langauge to a model
+      this.set('model.language', selectedLangCode);
+
+      // Send an event to a route to trigger display refresh
+      this.send('refreshNeeded');
+    }
+  }
 });

@@ -1,12 +1,12 @@
 {{#if model.candidates}}
-<h4>Recently Found Blocks</h4>
+<h4>{{t 'blocks.recentlyfound.title'}}</h4>
 <div class="table-responsive">
   <table class="table table-condensed table-striped">
     <thead>
       <tr>
-        <th>Height</th>
-        <th>Time Found</th>
-        <th>Variance</th>
+        <th>{{t 'blocks.table.height'}}</th>
+        <th>{{t 'blocks.table.timefound'}}</th>
+        <th>{{t 'blocks.table.variance'}}</th>
       </tr>
     </thead>
     <tbody>
@@ -27,5 +27,5 @@
   </table>
 </div>
 {{else}}
-<h3>No new blocks yet</h3>
+<h3>{{t 'blocks.recentlyfound.norecentlyfoundblock'}}</h3>
 {{/if}}

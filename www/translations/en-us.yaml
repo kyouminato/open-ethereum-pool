@@ -1,5 +1,126 @@
-product:
-  info: '{product} will cost {price, number, USD} if ordered by {deadline, date, time}'
-  title: 'Hello world!'
-  html:
-    info: '<strong>{product}</strong> will cost <em>{price, number, USD}</em> if ordered by {deadline, date, time}'
+navigation:
+  toggle: 'Toggle navigation'
+  home: 'Home'
+  help: 'Help'
+  poolblocks: 'Pool Blocks'
+  payments: 'Payments'
+  miners: 'Miners'
+  about: 'About'
+
+index:
+  header:
+    payout: '<strong>Min. payout threshold: {threthold}</strong>, Payouts run twice per day.'
+    prop: 'Stable and profitable pool with regular payouts.'
+  stats:
+    miners: 'Miners Online:'
+    poolhash: 'Pool Hash Rate:'
+    poolfee: 'Pool Fee:'
+    lastblock: 'Last Block Found:'
+    difficulty: 'Network Difficulty:'
+    nethash: 'Network Hash Rate:'
+    blockheight: 'Blockchain Height:'
+    currentvariance: 'Current Round Variance:'
+  lookup:
+    title: 'Your Stats & Payment History'
+    addressplaceholder: 'Enter Your Ethereum Address'
+    button: 'Lookup'
+
+miners:
+  totalhashrate: 'Total hashrate:'
+  totalminers: 'Total miners:'
+  table:
+    title: 'Miners'
+    login: 'Login'
+    hashrate: 'Hashrate'
+    lastbeat: 'Last Beat'
+  nominers: 'No miners'
+
+blocks:
+  explanation: 'Pool always pay full block reward including TX fees and uncle rewards.'
+  maturity: 'Block maturity requires <u>up to</u> </strong> <span class="label label-success">{maturitytime}</span> <strong>blocks. Usually it''s less indeed.'
+  tab:
+    blocks: 'Blocks'
+    immature: 'Immature'
+    newblocks: 'New Blocks'
+  luck:
+    blocks: 'Blocks'
+    sharesperdiff: 'Shares/Diff'
+    unclerate: 'Uncle Rate'
+    orphan: 'Orphan Rate'
+  immature:
+    title: 'Immature Blocks'
+    noimmatureblock: 'No immature blocks yet'
+  block:
+    orphan: 'Orphan'
+  matured:
+    title: 'Matured Blocks'
+    nomaturedblock: 'No matured blocks yet'
+  recentlyfound:
+    title: 'Recently Found Blocks'
+    norecentlyfoundblock: 'No new blocks yet'
+  table:
+    height: 'Height'
+    blockhash: 'Block Hash'
+    timefound: 'Time Found'
+    variance: 'Variance'
+    reward: 'Reward'
+
+account:
+  stats:
+    immaturebalance:
+      title: 'Immature Balance:'
+      description: 'Preliminary balance awaiting blocks to mature.'
+    pendingbalance:
+      title: 'Pending Balance:'
+      description: 'Credited coins awaiting payout.'
+    currentpayment: 'Current Payment:'
+    totalpaid: 'Total Paid:'
+    lastsharesubmitted: 'Last Share Submitted:'
+    workersonline: 'Workers Online:'
+    hashrate30m: 'Hashrate (30m):'
+    hashrate1h: 'Hashrate (3h):'
+    blockfound: 'Blocks Found:'
+    totalpayments: 'Total Payments:'
+    roundshare:
+      title: 'Your Round Share:'
+      description: 'Percent of your contribution to current round.'
+    epochswitch: 'Epoch Switch:'
+  tab:
+    workers: 'Workers'
+    payouts: 'Payouts'
+  workers:
+    title: 'Your Workers'
+    table:
+      id: 'ID'
+      shortaveragehashrate: 'Hashrate (rough, short average)'
+      logaveragehashrate: 'Hashrate (accurate, long average)'
+      lastshare: 'Last Share'
+    noworkersonline: 'No workers online'
+    notice:
+      title: 'Notice:'
+      description:
+        'Your average hashrate will be smoothly adjusted until you have shares to fullfill estimation window.<br/>
+        There are two windows, long and short, first is equal to about 30 minutes and long window is usually equal to 3 hours.<br/>
+        Dead (sick) workers will be highlighted in a table of workers if they didn''t submit a share for 1/2 of short window,
+        so you can perform maintenance of your rigs.'
+  payouts:
+    title: 'Your Latest Payouts'
+    table:
+      time: 'Time'
+      txid: 'Tx ID'
+      amount: 'Amount'
+    nopayouts: 'No payouts yet'
+  noaccountfound:
+    title: 'No Account Data Available'
+    description: 'If you are looking for your account stats, you need to submit at least a single share.'
+
+payments:
+  explanation: 'Pool always pay tx fees from it''s own pocket for now.'
+  totalsent: 'Total payments sent:'
+  latestpayouts: 'Latest Payouts'
+  table:
+    time: 'Time'
+    amount: 'Amount'
+    address: 'Address'
+    txid: 'Tx ID'
+  nopayouts: 'No payouts yet'

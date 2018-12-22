@@ -1,19 +1,19 @@
 <div class="jumbotron">
   <div class="container">
-    <p class="lead">Total hashrate: {{format-hashrate model.hashrate}}.</p>
-    <strong>Total miners:</strong> <span class="label label-info">{{model.minersTotal}}</span>
+    <p class="lead">{{t 'miners.totalhashrate'}} {{format-hashrate model.hashrate}}.</p>
+    <strong>{{t 'miners.totalminers'}}</strong> <span class="label label-info">{{model.minersTotal}}</span>
   </div>
 </div>
 <div class="container">
   {{#if model.miners}}
-  <h4>Miners</h4>
+  <h4>{{t 'miners.table.title'}}</h4>
   <div class="table-responsive">
     <table class="table table-condensed table-striped">
       <thead>
         <tr>
-          <th>Login</th>
-          <th>Hashrate</th>
-          <th>Last Beat</th>
+          <th>{{t 'miners.table.login'}}</th>
+          <th>{{t 'miners.table.hashrate'}}</th>
+          <th>{{t 'miners.table.lastbeat'}}</th>
         </tr>
       </thead>
       <tbody>
@@ -28,6 +28,6 @@
     </table>
   </div>
   {{else}}
-  <h3>No miners</h3>
+  <h3>{{t 'miners.nominers'}}</h3>
   {{/if}}
 </div>

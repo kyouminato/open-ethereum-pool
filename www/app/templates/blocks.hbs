@@ -1,9 +1,8 @@
 <div class="jumbotron">
   <div class="container">
-    <p class="lead">Pool always pay full block reward including TX fees and uncle rewards.</p>
+    <p class="lead">{{t 'blocks.explanation'}}</p>
     <strong>
-      Block maturity requires <u>up to</u> </strong> <span class="label label-success">520</span> <strong>blocks.
-      Usually it's less indeed.
+      {{t 'blocks.maturity' maturitytime=520 htmlSafe=true}}
     </strong>
   </div>
 </div>
@@ -13,13 +12,13 @@
   {{/if}}
   <ul class="nav nav-tabs">
     {{#active-li currentWhen='blocks.index' role='presentation'}}
-      {{#link-to 'blocks.index'}}Blocks <span class="badge alert-success">{{format-number model.maturedTotal}}</span>{{/link-to}}
+      {{#link-to 'blocks.index'}}{{t 'blocks.tab.blocks'}} <span class="badge alert-success">{{format-number model.maturedTotal}}</span>{{/link-to}}
     {{/active-li}}
     {{#active-li currentWhen='blocks.immature' role='presentation'}}
-      {{#link-to 'blocks.immature'}}Immature <span class="badge alert-success">{{format-number model.immatureTotal}}</span>{{/link-to}}
+      {{#link-to 'blocks.immature'}}{{t 'blocks.tab.immature'}} <span class="badge alert-success">{{format-number model.immatureTotal}}</span>{{/link-to}}
     {{/active-li}}
     {{#active-li currentWhen='blocks.pending' role='presentation'}}
-      {{#link-to 'blocks.pending'}}New Blocks <span class="badge alert-info">{{format-number model.candidatesTotal}}</span>{{/link-to}}
+      {{#link-to 'blocks.pending'}}{{t 'blocks.tab.newblocks'}} <span class="badge alert-info">{{format-number model.candidatesTotal}}</span>{{/link-to}}
     {{/active-li}}
   </ul>
   {{outlet}}

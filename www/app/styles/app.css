@@ -57,6 +57,10 @@ code {
 .navbar-default .navbar-brand {
 	color: #dadada;
 }
+.navbar-default a:hover {
+  text-decoration: none;
+}
+
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
 	color: #ffffff;
 }
@@ -175,4 +179,9 @@ h4.note {
 }
 .stats > div > span:first-of-type{
 	font-weight: bold;
+}
+
+/* language selector */
+#language-selector {
+  color: black;
 }
